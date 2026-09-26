@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ansh Saxena — Backend &amp; ML Infrastructure Engineer at Cyware Labs, Bengaluru</title>
+<meta name="description" content="Ansh Saxena is a Backend &amp; ML Infrastructure Engineer at Cyware Labs in Bengaluru, India, building LangGraph multi-agent systems, LLM orchestration and distributed backends in Python, Go and Java.">
+<meta name="author" content="Ansh Saxena">
+<link rel="canonical" href="https://anshsaxena05.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Ansh Saxena">
+<meta property="og:title" content="Ansh Saxena — Backend &amp; ML Infrastructure Engineer at Cyware Labs, Bengaluru">
+<meta property="og:description" content="Backend &amp; ML Infra Engineer @ Cyware Labs | Java · Go · Python | Kafka · Kubernetes · LangGraph/RAG | Bengaluru">
+<meta property="og:url" content="https://anshsaxena05.github.io/">
+<meta property="og:locale" content="en_IN">
+<meta property="profile:first_name" content="Ansh">
+<meta property="profile:last_name" content="Saxena">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ansh Saxena — Backend &amp; ML Infrastructure Engineer at Cyware Labs, Bengaluru">
+<meta name="twitter:description" content="Backend &amp; ML Infra Engineer @ Cyware Labs | Java · Go · Python | Kafka · Kubernetes · LangGraph/RAG | Bengaluru">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://anshsaxena05.github.io/#person",
+  "name": "Ansh Saxena",
+  "givenName": "Ansh",
+  "familyName": "Saxena",
+  "jobTitle": "Software Engineer, ML Infrastructure & Backend",
+  "description": "Backend & ML Infra Engineer @ Cyware Labs | Java · Go · Python | Kafka · Kubernetes · LangGraph/RAG | Bengaluru",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Cyware Labs",
+    "url": "https://cyware.com"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bengaluru",
+    "addressCountry": "IN"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Vellore Institute of Technology"
+  },
+  "url": "https://anshsaxena05.github.io/",
+  "email": "mailto:anshs5103@gmail.com",
+  "knowsAbout": [
+    "Backend engineering",
+    "Distributed systems",
+    "ML infrastructure",
+    "LLM orchestration",
+    "LangGraph",
+    "LangChain",
+    "Retrieval-augmented generation (RAG)",
+    "Weaviate",
+    "Multi-agent systems",
+    "Python",
+    "Go",
+    "Java",
+    "FastAPI",
+    "Spring Boot",
+    "Apache Kafka",
+    "NATS JetStream",
+    "PostgreSQL",
+    "Redis",
+    "Kubernetes",
+    "AWS",
+    "OpenTelemetry"
+  ],
+  "sameAs": [
+    "https://github.com/AnshSaxena05",
+    "https://www.linkedin.com/in/ansh-saxena-1c",
+    "https://medium.com/@anshs5103",
+    "https://leetcode.com/u/AnshSaxena1/"
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="home" href="./">Ansh Saxena</a>
+  <nav><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="writing/">Writing</a><a href="#contact">Contact</a></nav>
+</div></header>
+<main class="wrap">
+
+<h1>Ansh Saxena — <span class="role">Backend &amp; ML Infrastructure Engineer at Cyware Labs, Bengaluru</span></h1>
+<p class="lede">I'm Ansh Saxena, a Backend &amp; ML Infrastructure Engineer at <a href="https://cyware.com">Cyware Labs</a> in Bengaluru, India. I build production distributed systems and LLM/agentic platforms in Python, Go and Java: multi-tenant services, event-driven pipelines, and RAG and multi-agent systems that run in production.</p>
+<p class="tag">Backend &amp; ML Infra Engineer @ Cyware Labs | Java · Go · Python | Kafka · Kubernetes · LangGraph/RAG | Bengaluru</p>
+
+<section id="about">
+<h2>About</h2>
+<p>I work where backend engineering meets applied AI. At Cyware Labs (B2B cybersecurity SaaS) I architected Quarterback, a production LangGraph multi-agent platform for SOC threat triage. I also designed AI Engine, a multi-vendor LLM orchestration and serving layer, and built Go and Java services on PostgreSQL, NATS JetStream and Kubernetes. I hold a B.Tech in Artificial Intelligence &amp; Machine Learning from Vellore Institute of Technology (VIT).</p>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+
+<h3>Software Engineer, ML Infrastructure &amp; Backend — Cyware Labs</h3>
+<p class="meta">Jan 2025 – Present · Bengaluru, India · B2B cybersecurity SaaS, Series C, 45+ enterprise customers</p>
+<ul>
+<li>Cut analyst threat-triage time by 50% across 45+ enterprise SOC deployments by architecting Quarterback, a production LangGraph multi-agent platform resolving alerts via natural language with tool integrations (VirusTotal, Splunk, CrowdStrike); chose a stateful DAG over a rules engine for ~3x faster analyst onboarding.</li>
+<li>Eliminated LLM provider lock-in by designing AI Engine (Python, FastAPI, ~13K LOC), a multi-vendor LLM orchestration/serving layer routing inference across 4 providers (OpenAI, Azure-OpenAI, Gemini, Groq) behind one LLMClient abstraction with per-tenant credential isolation, tiktoken cost accounting, and JSON-schema-forced outputs.</li>
+<li>Raised tool-dispatch precision from ~60% to 89% on a 200-case model evaluation pipeline by replacing hardcoded routing with a multi-tenant Weaviate RAG layer, using deterministic upsert IDs for idempotent re-ingest across 10+ integrations.</li>
+<li>Built central-pir (Go 1.25, Hexagonal / Ports-and-Adapters) as two binaries from one image (HTTP API + worker) with schema-per-tenant Postgres isolation (chosen over row-level security after p99 benchmarks), 8 durable JetStream consumers, atomic dedup via ON CONFLICT DO NOTHING (no distributed locking), and a LiteLLM proxy for unified multi-model access.</li>
+<li>Removed the entire producer-side backpressure module (~100% code deletion) by rebuilding the async query pipeline on NATS JetStream with a durable pull consumer, an asyncio worker per message, at-least-once semantics with reply-before-ack, and ULID-based idempotent replies.</li>
+<li>Sustained 100+ QPS at P95 sub-100ms on a Java query-language compiler via query-plan rewrites, connection pooling, and index-aware PostgreSQL execution; resolved 229 production bugs (29 critical) on L3 rotation, raising platform stability 40%, with end-to-end OpenTelemetry tracing exported to Langfuse.</li>
+<li>Root-caused an intermittent worker stall that health checks reported as "alive" to a synchronous 17 MB CSV stream freezing the single-threaded asyncio event loop and orphaning the JetStream subscription; fixed with asyncio.to_thread and made the consumer self-healing via dead-handle detection with exponential-backoff re-subscribe plus an idle-heartbeat log surfacing stalls within ~60s.</li>
+</ul>
+
+<h3>Software Engineering Intern — PreProd Corp</h3>
+<p class="meta">Nov 2023 – Feb 2024 · Bengaluru, India · ML &amp; pricing analytics startup</p>
+<ul>
+<li>Drove a 25% business-metric gain at 90% prediction accuracy by deploying a Gradient Boosting pricing model behind production REST APIs; sustained 99.9% uptime on a PostgreSQL ETL pipeline processing 2 GB+/day via SQL query optimization and pipeline redesign.</li>
+</ul>
+
+<h3>Machine Learning Engineer Intern — Omdena</h3>
+<p class="meta">Jun 2023 – Aug 2023 · Remote · Global collaborative AI platform, 40+ countries</p>
+<ul>
+<li>Cut cloud inference cost 30% and raised model accuracy to 92% by applying TensorFlow quantization to the served model on Docker + AWS at sub-350ms latency, with a 40% Airflow ETL throughput gain on a data-processing pipeline handling 100K+ records/day.</li>
+</ul>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="card">
+<h3><a href="projects/soc-triage-agent.html">SOC Triage Agent</a> <span class="tag">(open source)</span></h3>
+<p>An agentic alert-triage service. It ingests alerts from Splunk, CrowdStrike, AWS GuardDuty and Sentinel (plus a generic format, with source auto-detection) and normalises them to OCSF. It then runs a LangGraph DAG with MITRE ATT&amp;CK-routed enrichment and emits a structured <code>TriageVerdict</code> (Pydantic) via async HTTP 202 + polling. It also has a pluggable LLM backend, API-key auth, a Pytest suite and OpenAPI/Swagger docs.</p>
+<p class="meta">Python 3.14 · FastAPI · LangGraph · Pydantic · Redis · Langfuse · Ollama · Docker</p>
+<p><a href="projects/soc-triage-agent.html">Read the case study</a> · <a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage">Source on GitHub</a></p>
+</div>
+
+<div class="card">
+<h3>Quarterback <span class="tag">(internal, Cyware Labs)</span></h3>
+<p>A production LangGraph multi-agent platform that resolves SOC alerts through natural language, with tool integrations for VirusTotal, Splunk and CrowdStrike. It cut analyst threat-triage time by 50% across 45+ enterprise SOC deployments. I chose a stateful DAG over a rules engine, which gave ~3x faster analyst onboarding. This is proprietary work, so there is no public code.</p>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<dl class="skills">
+<dt>Languages</dt><dd>Python, Go, Java, SQL, JavaScript</dd>
+<dt>ML / AI infrastructure</dt><dd>Model deployment &amp; serving, model optimization (quantization), inference latency/cost optimization, multi-vendor LLM orchestration, LiteLLM Proxy, RAG &amp; vector search (Weaviate), LangGraph (multi-agent DAGs), LangChain, DSPy, LLM evaluation &amp; observability (Langfuse), RAGAS, prompt engineering, LLM guardrails, agentic AI, MCP (Model Context Protocol), Gemini / OpenAI / Claude APIs, Ollama</dd>
+<dt>Backend &amp; distributed systems</dt><dd>Microservices, Hexagonal Architecture (Ports &amp; Adapters), event-driven design, concurrency (asyncio, multithreading), multi-tenancy, low-latency optimization, REST, gRPC, FastAPI, Spring Boot, Spring MVC, Spring Framework, Spring AOP, design patterns, OOD</dd>
+<dt>Messaging &amp; data</dt><dd>NATS JetStream, Apache Kafka, PostgreSQL (pgx, PgBouncer), Redis, Weaviate, MongoDB, Elasticsearch, DynamoDB, Apache KVRocks</dd>
+<dt>Cloud &amp; DevOps</dt><dd>AWS (EKS, Lambda, S3, EC2), Docker, Kubernetes, Terraform, OpenTelemetry, Prometheus, GitHub Actions CI/CD, Airflow, Git, Maven, Gradle, JIRA, JUnit</dd>
+</dl>
+</section>
+
+<section id="writing">
+<h2>Writing</h2>
+<ul>
+<li><a href="https://medium.com/@anshs5103">IoC → IoB: How AI Is Transforming Cybersecurity</a> (Medium, Mar 2026). A 16-minute technical essay on behavioural threat-intelligence architecture.</li>
+<li>Contributor, OCA IoB Working Group: open event-schema standards for distributed AI platforms.</li>
+</ul>
+<p><a href="writing/">All writing</a></p>
+</section>
+
+<section id="education">
+<h2>Education &amp; Certifications</h2>
+<h3>Vellore Institute of Technology (VIT)</h3>
+<p class="meta">B.Tech, Artificial Intelligence &amp; Machine Learning · Aug 2021 – Jun 2025 · CGPA 8.71/10</p>
+<ul>
+<li>OCI Generative AI Professional (Oracle, 2025)</li>
+<li>AWS Certified Cloud Practitioner (2025)</li>
+<li>Oracle Certified Java Developer (Java SE 11)</li>
+</ul>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<ul>
+<li>Email: <a href="mailto:anshs5103@gmail.com">anshs5103@gmail.com</a></li>
+<li>GitHub: <a href="https://github.com/AnshSaxena05" rel="me">github.com/AnshSaxena05</a></li>
+<li>LinkedIn: <a href="https://www.linkedin.com/in/ansh-saxena-1c" rel="me">linkedin.com/in/ansh-saxena-1c</a></li>
+<li>Medium: <a href="https://medium.com/@anshs5103" rel="me">medium.com/@anshs5103</a></li>
+<li>LeetCode: <a href="https://leetcode.com/u/AnshSaxena1/" rel="me">leetcode.com/u/AnshSaxena1</a> (1,701 rating, 368 problems, Top 13%)</li>
+</ul>
+</section>
+
+</main>
+<footer><div class="wrap">© 2026 Ansh Saxena · Bengaluru, India · <a href="llms.txt">llms.txt</a></div></footer>
+</body>
+</html>

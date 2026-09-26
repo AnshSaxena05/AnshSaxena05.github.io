@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOC Triage Agent: LangGraph Alert-Triage Case Study — Ansh Saxena</title>
+<meta name="description" content="Case study by Ansh Saxena, a Backend &amp; ML Infrastructure Engineer: an open-source agentic SOC alert-triage service built with FastAPI, LangGraph and Pydantic, with deterministic MITRE ATT&amp;CK routing.">
+<meta name="author" content="Ansh Saxena">
+<link rel="canonical" href="https://anshsaxena05.github.io/projects/soc-triage-agent.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ansh Saxena">
+<meta property="og:title" content="SOC Triage Agent: LangGraph Alert-Triage Case Study — Ansh Saxena">
+<meta property="og:description" content="An open-source agentic SOC alert-triage service: OCSF normalisation, MITRE ATT&amp;CK-routed enrichment, a LangGraph state machine, and a structured TriageVerdict.">
+<meta property="og:url" content="https://anshsaxena05.github.io/projects/soc-triage-agent.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "SOC Triage Agent",
+  "description": "Agentic SOC alert-triage service: ingest alerts from Splunk, CrowdStrike, AWS GuardDuty and more, normalise them, enrich via MITRE-routed tools, and produce a structured TriageVerdict using LangGraph and LLM reasoning.",
+  "codeRepository": "https://github.com/AnshSaxena05/cyberSecurity_alert_triage",
+  "programmingLanguage": "Python",
+  "url": "https://anshsaxena05.github.io/projects/soc-triage-agent.html",
+  "author": {
+    "@type": "Person",
+    "@id": "https://anshsaxena05.github.io/#person",
+    "name": "Ansh Saxena",
+    "url": "https://anshsaxena05.github.io/"
+  }
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="home" href="../">Ansh Saxena</a>
+  <nav><a href="../#experience">Experience</a><a href="../#projects">Projects</a><a href="../writing/">Writing</a><a href="../#contact">Contact</a></nav>
+</div></header>
+<main class="wrap">
+
+<h1>SOC Triage Agent <span class="role">An open-source LangGraph service for agentic SOC alert triage</span></h1>
+<p class="lede">SOC Triage Agent is an open-source service by <a href="../">Ansh Saxena</a>. It ingests alerts from Splunk, CrowdStrike, AWS GuardDuty and other sources, normalises them, and enriches them through MITRE-routed tools. It then produces a structured <code>TriageVerdict</code> using LangGraph and LLM reasoning.</p>
+<p><a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage">github.com/AnshSaxena05/cyberSecurity_alert_triage</a></p>
+
+<h2>Problem</h2>
+<p>Agentic AI systems fail in production when they hand the LLM decisions that could be made deterministically. Choosing the query window, the source system, the time range and the API parameters are lookup tasks, not reasoning tasks. When an LLM makes them, results become unreliable and it can hallucinate.</p>
+
+<h2>Design: determinism first</h2>
+<p>The system inverts that pattern. The LLM only reasons about meaning: what the data suggests, whether an alert is a false positive, and what the attacker's objective is. Plain Python code makes every structural decision.</p>
+<p>The pipeline is split into two phases:</p>
+<ul>
+<li><strong>Phase 1: deterministic fast path</strong> (target under 2 seconds). Raw alert JSON becomes typed entities, an ordered tool list and a tool budget. A small local model (<code>llama3.2:3b</code>) is used only for entity extraction in structured-output mode. If Ollama is unavailable, a heuristic regex fallback takes over.</li>
+<li><strong>Phase 2: LLM-driven deep path</strong> (target under 60 seconds). A parallel tool burst fires before any LLM call, and a ReAct loop handles follow-up only. The output is a 6-section <code>TriageVerdict</code> as structured JSON.</li>
+</ul>
+
+<h2>How it works</h2>
+<ol>
+<li><strong>Ingest.</strong> <code>POST /ingest/{source}</code> accepts <code>splunk</code>, <code>crowdstrike</code>, <code>aws_guardduty</code>, <code>sentinel</code> or <code>generic</code>. <code>POST /ingest/auto</code> detects the source from the payload shape. Triage runs asynchronously: the POST returns <code>202</code> with an <code>alert_id</code>, and the client polls <code>GET /verdict/{alert_id}</code> until the status is <code>complete</code>.</li>
+<li><strong>Normalise.</strong> Every source maps to one OCSF-aligned <code>NormalizedAlert</code>. The <code>alert_id</code> is a SHA-256 hash of the source and its alert ID, so duplicate webhook deliveries get the same ID and can be deduplicated.</li>
+<li><strong>Extract entities.</strong> Pydantic enforces the <code>ExtractedEntities</code> schema (hosts, users, processes, techniques, IOCs), so malformed LLM output cannot reach the routing layer.</li>
+<li><strong>Route by MITRE technique.</strong> A technique-to-tools routing table gives O(1) lookup, falling back from a sub-technique to its parent technique and then to a default route. Look-back windows are fixed per signal type (for example 72h for process execution and 14d for authentication).</li>
+<li><strong>Set a tool budget by severity.</strong> The budget is 3 for LOW, 5 for MEDIUM, 8 for HIGH and 99 (effectively unlimited) for CRITICAL. The budget check runs in Python, so the LLM never controls it.</li>
+<li><strong>Burst enrichment.</strong> <code>asyncio.gather</code> fires all routed tools in parallel, each with its own timeout. A tool that fails degrades gracefully to <code>source_available: False</code> and never raises. Each result is compressed to at most 200 tokens before the LLM sees it.</li>
+<li><strong>ReAct follow-up.</strong> The LangGraph <code>agent_think</code> node can plan more tool calls. The loop continues only while the model asks for more tools and the budget is still positive.</li>
+<li><strong>Generate verdict.</strong> The verdict has 6 sections: severity with justification, MITRE assessments, a triage summary, confirmed IOCs (only those corroborated by enrichment), prioritised immediate actions, and an escalation decision (<code>ESCALATE_IR</code>, <code>FALSE_POSITIVE</code>, <code>MONITOR</code> or <code>CLOSE</code>) with rationale.</li>
+</ol>
+
+<h3>Safety and reliability</h3>
+<ul>
+<li><strong>Three guard layers:</strong>
+<ul>
+<li>An input guard before normalisation: API-key check, a 1MB size limit and injection scrubbing.</li>
+<li>A content filter before each tool call: it blocks dangerous SPL, blocks SSRF targets and bounds <code>hours_back</code>.</li>
+<li>An output filter before logging or returning results.</li>
+</ul></li>
+<li><strong>Prompt-injection mitigation:</strong> the LLM never writes SPL directly. A builder generates validated SPL from typed parameters, and even if the LLM is tricked into emitting raw SPL, the content filter blocks it.</li>
+<li><strong>IOC cache:</strong> Redis with a 15-minute TTL and order-independent keys. The pipeline keeps working if Redis is unavailable.</li>
+<li><strong>Observability:</strong> structured logging with structlog, optional LangSmith tracing, a per-alert cost tracker exposed at <code>GET /metrics</code>, and capture of analyst feedback when an analyst disagrees with a verdict.</li>
+<li><strong>Evaluation:</strong> a golden set of 6 labelled alerts with expected severity and escalation. Scenarios include DNS tunnelling, ransomware pre-staging, AWS IAM privilege escalation and credential dumping.</li>
+</ul>
+
+<h2>Stack</h2>
+<p>Python 3.14+ · FastAPI · LangGraph · Pydantic · Ollama or OpenAI (optional) · Redis (optional) · Langfuse (optional) · structlog · Docker Compose (app + Redis + Ollama) · pytest · uv. The API is documented with OpenAPI, Swagger UI and ReDoc. The default test suite needs no external APIs.</p>
+
+<h2>Links</h2>
+<ul>
+<li>Source code: <a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage">github.com/AnshSaxena05/cyberSecurity_alert_triage</a></li>
+<li>Architecture doc: <a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage/blob/HEAD/docs/architecture.md">docs/architecture.md</a></li>
+<li>More about the author: <a href="../">Ansh Saxena, Backend &amp; ML Infrastructure Engineer at Cyware Labs, Bengaluru</a></li>
+</ul>
+
+</main>
+<footer><div class="wrap">© 2026 Ansh Saxena · <a href="../">Home</a> · <a href="../writing/">Writing</a></div></footer>
+</body>
+</html>

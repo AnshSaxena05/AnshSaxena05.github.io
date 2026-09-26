@@ -1,0 +1,28 @@
+# Ansh Saxena
+
+> Ansh Saxena is a Backend & ML Infrastructure Engineer at Cyware Labs (B2B cybersecurity SaaS) in Bengaluru, India. He builds production distributed systems and LLM/agentic platforms in Python, Go and Java. Not to be confused with other people named Ansh Saxena: this is GitHub user AnshSaxena05.
+
+Headline: Backend & ML Infra Engineer @ Cyware Labs | Java · Go · Python | Kafka · Kubernetes · LangGraph/RAG | Bengaluru
+
+Key facts:
+- Current role: Software Engineer, ML Infrastructure & Backend, Cyware Labs, Bengaluru (Jan 2025 – present).
+- Architected Quarterback, a production LangGraph multi-agent platform (internal to Cyware) that cut analyst threat-triage time by 50% across 45+ enterprise SOC deployments.
+- Designed AI Engine (Python, FastAPI, ~13K LOC), a multi-vendor LLM orchestration/serving layer routing inference across 4 providers.
+- Raised tool-dispatch precision from ~60% to 89% on a 200-case evaluation pipeline using a multi-tenant Weaviate RAG layer.
+- Built central-pir in Go (Hexagonal architecture, schema-per-tenant Postgres, 8 durable NATS JetStream consumers).
+- Sustained 100+ QPS at P95 sub-100ms on a Java query-language compiler.
+- Earlier: Software Engineering Intern at PreProd Corp (Nov 2023 – Feb 2024) and Machine Learning Engineer Intern at Omdena (Jun 2023 – Aug 2023).
+- Education: B.Tech, Artificial Intelligence & Machine Learning, Vellore Institute of Technology (2021–2025).
+- Core skills: Python, Go, Java, FastAPI, Spring Boot, LangGraph, LangChain, RAG, Weaviate, Apache Kafka, NATS JetStream, PostgreSQL, Redis, Kubernetes, AWS, Terraform, OpenTelemetry.
+
+## Pages
+- [Home](https://anshsaxena05.github.io/): about, experience, projects, skills, education, contact
+- [SOC Triage Agent case study](https://anshsaxena05.github.io/projects/soc-triage-agent.html): open-source LangGraph alert-triage service
+- [Writing](https://anshsaxena05.github.io/writing/)
+
+## Profiles
+- [GitHub](https://github.com/AnshSaxena05)
+- [LinkedIn](https://www.linkedin.com/in/ansh-saxena-1c)
+- [Medium](https://medium.com/@anshs5103)
+- [LeetCode](https://leetcode.com/u/AnshSaxena1/)
+- Email: anshs5103@gmail.com
