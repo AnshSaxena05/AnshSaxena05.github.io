@@ -91,23 +91,15 @@
 
 <section id="about">
 <h2>About</h2>
-<p>I work where backend engineering meets applied AI. At Cyware Labs (B2B cybersecurity SaaS) I architected Quarterback, a production LangGraph multi-agent platform for SOC threat triage. I also designed AI Engine, a multi-vendor LLM orchestration and serving layer, and built Go and Java services on PostgreSQL, NATS JetStream and Kubernetes. I hold a B.Tech in Artificial Intelligence &amp; Machine Learning from Vellore Institute of Technology (VIT).</p>
+<p>I work where backend engineering meets applied AI. At Cyware Labs (B2B cybersecurity SaaS) I build backend services and LLM infrastructure in Python, Go and Java. In my own time I built an <a href="projects/soc-triage-agent.html">open-source SOC alert-triage agent</a> on LangGraph, FastAPI and Pydantic. I hold a B.Tech in Artificial Intelligence &amp; Machine Learning from Vellore Institute of Technology (VIT).</p>
 </section>
 
 <section id="experience">
 <h2>Experience</h2>
 
 <h3>Software Engineer, ML Infrastructure &amp; Backend — Cyware Labs</h3>
-<p class="meta">Jan 2025 – Present · Bengaluru, India · B2B cybersecurity SaaS, Series C, 45+ enterprise customers</p>
-<ul>
-<li>Cut analyst threat-triage time by 50% across 45+ enterprise SOC deployments by architecting Quarterback, a production LangGraph multi-agent platform resolving alerts via natural language with tool integrations (VirusTotal, Splunk, CrowdStrike); chose a stateful DAG over a rules engine for ~3x faster analyst onboarding.</li>
-<li>Eliminated LLM provider lock-in by designing AI Engine (Python, FastAPI, ~13K LOC), a multi-vendor LLM orchestration/serving layer routing inference across 4 providers (OpenAI, Azure-OpenAI, Gemini, Groq) behind one LLMClient abstraction with per-tenant credential isolation, tiktoken cost accounting, and JSON-schema-forced outputs.</li>
-<li>Raised tool-dispatch precision from ~60% to 89% on a 200-case model evaluation pipeline by replacing hardcoded routing with a multi-tenant Weaviate RAG layer, using deterministic upsert IDs for idempotent re-ingest across 10+ integrations.</li>
-<li>Built central-pir (Go 1.25, Hexagonal / Ports-and-Adapters) as two binaries from one image (HTTP API + worker) with schema-per-tenant Postgres isolation (chosen over row-level security after p99 benchmarks), 8 durable JetStream consumers, atomic dedup via ON CONFLICT DO NOTHING (no distributed locking), and a LiteLLM proxy for unified multi-model access.</li>
-<li>Removed the entire producer-side backpressure module (~100% code deletion) by rebuilding the async query pipeline on NATS JetStream with a durable pull consumer, an asyncio worker per message, at-least-once semantics with reply-before-ack, and ULID-based idempotent replies.</li>
-<li>Sustained 100+ QPS at P95 sub-100ms on a Java query-language compiler via query-plan rewrites, connection pooling, and index-aware PostgreSQL execution; resolved 229 production bugs (29 critical) on L3 rotation, raising platform stability 40%, with end-to-end OpenTelemetry tracing exported to Langfuse.</li>
-<li>Root-caused an intermittent worker stall that health checks reported as "alive" to a synchronous 17 MB CSV stream freezing the single-threaded asyncio event loop and orphaning the JetStream subscription; fixed with asyncio.to_thread and made the consumer self-healing via dead-handle detection with exponential-backoff re-subscribe plus an idle-heartbeat log surfacing stalls within ~60s.</li>
-</ul>
+<p class="meta">Jan 2025 – Present · Bengaluru, India · B2B cybersecurity SaaS</p>
+<p>Backend and ML infrastructure work in Python, Go and Java: multi-tenant services, event-driven pipelines, and LLM orchestration and agentic systems running on PostgreSQL, message queues and Kubernetes. Details of internal products are not public.</p>
 
 <h3>Software Engineering Intern — PreProd Corp</h3>
 <p class="meta">Nov 2023 – Feb 2024 · Bengaluru, India · ML &amp; pricing analytics startup</p>
@@ -130,11 +122,6 @@
 <p>An agentic alert-triage service. It ingests alerts from Splunk, CrowdStrike, AWS GuardDuty and Sentinel (plus a generic format, with source auto-detection) and normalises them to OCSF. It then runs a LangGraph DAG with MITRE ATT&amp;CK-routed enrichment and emits a structured <code>TriageVerdict</code> (Pydantic) via async HTTP 202 + polling. It also has a pluggable LLM backend, API-key auth, a Pytest suite and OpenAPI/Swagger docs.</p>
 <p class="meta">Python 3.14 · FastAPI · LangGraph · Pydantic · Redis · Langfuse · Ollama · Docker</p>
 <p><a href="projects/soc-triage-agent.html">Read the case study</a> · <a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage">Source on GitHub</a></p>
-</div>
-
-<div class="card">
-<h3>Quarterback <span class="tag">(internal, Cyware Labs)</span></h3>
-<p>A production LangGraph multi-agent platform that resolves SOC alerts through natural language, with tool integrations for VirusTotal, Splunk and CrowdStrike. It cut analyst threat-triage time by 50% across 45+ enterprise SOC deployments. I chose a stateful DAG over a rules engine, which gave ~3x faster analyst onboarding. This is proprietary work, so there is no public code.</p>
 </div>
 </section>
 
@@ -165,7 +152,7 @@
 <ul>
 <li>OCI Generative AI Professional (Oracle, 2025)</li>
 <li>AWS Certified Cloud Practitioner (2025)</li>
-<li>Oracle Certified Java Developer (Java SE 11)</li>
+<li>Java Development on Oracle Cloud, Oracle University (certificate of completion, Feb 2024)</li>
 </ul>
 </section>
 
