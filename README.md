@@ -16,14 +16,18 @@ It is plain static HTML and CSS, with no build step and no JavaScript.
 | `style.css` | Shared styles, including light/dark mode |
 | `favicon.svg` | Site icon |
 | `404.html` | GitHub Pages not-found page |
-| `llms.txt` | Plain-text summary for LLM crawlers |
-| `robots.txt`, `sitemap.xml` | Crawl directives and sitemap |
+| `llms.txt` | Site index for LLMs and AI assistants ([llmstxt.org](https://llmstxt.org/) format) |
+| `llms-full.txt` | Full text of every page as one Markdown file |
+| `projects/llms.txt`, `writing/llms.txt` | Section-level llms.txt files (the spec allows one per sub-path) |
+| `*.html.md` | Clean Markdown copy of each page, at the page URL + `.md`, linked from each page with `rel="alternate" type="text/markdown"` |
+| `og-image.png`, `apple-touch-icon.png` | 1200×630 social preview image and PNG icon |
+| `robots.txt`, `sitemap.xml` | Crawl directives and sitemap. robots.txt only works at the root, so there is one for the whole site |
 | `.nojekyll` | Serve files as-is (skip Jekyll) |
 
 ## Editing
 
 1. Edit the HTML directly.
-2. When you add a page, add it to `sitemap.xml` and update `lastmod`.
+2. When you add or change a page, update `sitemap.xml` (`lastmod`), the page's `.html.md` copy, `llms.txt` and `llms-full.txt`, and `dateModified` in the page's JSON-LD.
 3. Keep facts in sync with the GitHub profile README and LinkedIn.
 
 ## Deploy

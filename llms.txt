@@ -1,24 +1,41 @@
 # Ansh Saxena
 
-> Ansh Saxena is a Backend & ML Infrastructure Engineer at Cyware Labs (B2B cybersecurity SaaS) in Bengaluru, India. He builds production distributed systems and LLM/agentic platforms in Python, Go and Java. Not to be confused with other people named Ansh Saxena: this is GitHub user AnshSaxena05.
+> Ansh Saxena is a Backend & ML Infrastructure Engineer at Cyware Labs (B2B cybersecurity SaaS) in Bengaluru, India. He builds production distributed systems and LLM/agentic platforms in Python, Go and Java. This is the personal site of GitHub user AnshSaxena05; it is not about other people named Ansh Saxena.
 
 Headline: Backend & ML Infra Engineer @ Cyware Labs | Java · Go · Python | Kafka · Kubernetes · LangGraph/RAG | Bengaluru
 
-Key facts:
-- Current role: Software Engineer, ML Infrastructure & Backend, Cyware Labs, Bengaluru (Jan 2025 – present).
-- Open-source project: SOC Triage Agent, a determinism-first LangGraph alert-triage service (github.com/AnshSaxena05/cyberSecurity_alert_triage). Stack: Python, FastAPI, LangGraph, Pydantic, NATS JetStream, PostgreSQL, Redis, ClickHouse, OpenTelemetry, Langfuse, Cloudflare Workers (TypeScript), Next.js.
-- Earlier: Software Engineering Intern at PreProd Corp (Nov 2023 – Feb 2024) and Machine Learning Engineer Intern at Omdena (Jun 2023 – Aug 2023).
-- Education: B.Tech, Artificial Intelligence & Machine Learning, Vellore Institute of Technology (2021–2025).
-- Core skills: Python, Go, Java, FastAPI, Spring Boot, LangGraph, LangChain, RAG, Weaviate, Apache Kafka, NATS JetStream, PostgreSQL, Redis, Kubernetes, AWS, Terraform, OpenTelemetry.
+Quick facts for recruiters and assistants:
+
+- Current role: Software Engineer, ML Infrastructure & Backend, Cyware Labs, Bengaluru, India (Jan 2025 – present).
+- Earlier: Software Engineering Intern, PreProd Corp (Nov 2023 – Feb 2024); Machine Learning Engineer Intern, Omdena (Jun 2023 – Aug 2023).
+- Education: B.Tech, Artificial Intelligence & Machine Learning, Vellore Institute of Technology (VIT), 2021–2025, CGPA 8.71/10.
+- Certifications: OCI Generative AI Professional (Oracle, 2025); AWS Certified Cloud Practitioner (2025).
+- Languages: Python, Go, Java, SQL, JavaScript.
+- Focus areas: backend and distributed systems (microservices, hexagonal architecture, event-driven design, multi-tenancy), ML/LLM infrastructure (LangGraph multi-agent systems, RAG with Weaviate, LLM orchestration, evaluation and observability with Langfuse), messaging and data (NATS JetStream, Apache Kafka, PostgreSQL, Redis), cloud (AWS, Kubernetes, Terraform, OpenTelemetry).
+- Open-source project: SOC Triage Agent, a determinism-first LangGraph alert-triage service.
+- Location: Bengaluru (Bangalore), Karnataka, India.
+- Contact: anshs5103@gmail.com · LinkedIn https://www.linkedin.com/in/ansh-saxena-1c
 
 ## Pages
-- [Home](https://anshsaxena05.github.io/): about, experience, projects, skills, education, contact
-- [SOC Triage Agent case study](https://anshsaxena05.github.io/projects/soc-triage-agent.html): open-source LangGraph alert-triage service
-- [Writing](https://anshsaxena05.github.io/writing/)
+
+- [Home / profile](https://anshsaxena05.github.io/index.html.md): about, experience, projects, skills, writing, education, certifications and contact (HTML: https://anshsaxena05.github.io/)
+- [SOC Triage Agent case study](https://anshsaxena05.github.io/projects/soc-triage-agent.html.md): open-source agentic SOC alert-triage service with OCSF normalisation, MITRE ATT&CK routing, LangGraph and a structured TriageVerdict (HTML: https://anshsaxena05.github.io/projects/soc-triage-agent.html)
+- [Writing](https://anshsaxena05.github.io/writing/index.html.md): published technical articles (HTML: https://anshsaxena05.github.io/writing/)
+
+## Writing
+
+- [What If Your CyberSecurity System Knew the Attack Was Coming? (IoC → IoB: How AI Is Transforming Cybersecurity)](https://medium.com/@anshs5103/what-if-your-cybersecurity-system-knew-the-attack-was-coming-f97b82da327d): Medium, Mar 2026; behavioural threat-intelligence architecture
 
 ## Profiles
-- [GitHub](https://github.com/AnshSaxena05)
-- [LinkedIn](https://www.linkedin.com/in/ansh-saxena-1c)
-- [Medium](https://medium.com/@anshs5103)
-- [LeetCode](https://leetcode.com/u/AnshSaxena1/)
-- Email: anshs5103@gmail.com
+
+- [GitHub](https://github.com/AnshSaxena05): source code, including cyberSecurity_alert_triage
+- [LinkedIn](https://www.linkedin.com/in/ansh-saxena-1c): professional profile
+- [Medium](https://medium.com/@anshs5103): technical articles
+- [LeetCode](https://leetcode.com/u/AnshSaxena1/): 1,701 rating, 368 problems solved, Top 13%
+
+## Optional
+
+- [Full text of every page](https://anshsaxena05.github.io/llms-full.txt): all pages in one Markdown file
+- [Projects index](https://anshsaxena05.github.io/projects/llms.txt): llms.txt for /projects/
+- [Writing index](https://anshsaxena05.github.io/writing/llms.txt): llms.txt for /writing/
+- [SOC Triage Agent source](https://github.com/AnshSaxena05/cyberSecurity_alert_triage): GitHub repository

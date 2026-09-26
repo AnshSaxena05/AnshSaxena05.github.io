@@ -1,3 +1,14 @@
+# robots.txt for https://anshsaxena05.github.io/
+# Personal site of Ansh Saxena, Backend & ML Infrastructure Engineer at Cyware Labs, Bengaluru.
+#
+# Everything on this site is public and may be crawled and indexed by search
+# engines and AI assistants. This is the only robots.txt crawlers read for
+# this host (RFC 9309 requires it at the root; per-folder copies are ignored).
+#
+# LLM-friendly summaries:
+#   https://anshsaxena05.github.io/llms.txt       (index)
+#   https://anshsaxena05.github.io/llms-full.txt  (full text of every page)
+
 User-agent: *
 Allow: /
 

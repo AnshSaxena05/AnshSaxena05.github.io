@@ -1,0 +1,15 @@
+# Ansh Saxena — Writing
+
+> Technical writing by Ansh Saxena, Backend & ML Infrastructure Engineer at Cyware Labs, Bengaluru (Medium: @anshs5103), on backend and AI architecture and cybersecurity. This file covers URLs under https://anshsaxena05.github.io/writing/. Site-wide index: https://anshsaxena05.github.io/llms.txt
+
+## Articles
+
+- [What If Your CyberSecurity System Knew the Attack Was Coming? (IoC → IoB: How AI Is Transforming Cybersecurity)](https://medium.com/@anshs5103/what-if-your-cybersecurity-system-knew-the-attack-was-coming-f97b82da327d): Medium, Mar 2026, 16-minute read; behavioural threat-intelligence architecture and the shift from indicators of compromise to indicators of behaviour
+
+## Pages
+
+- [Writing index](https://anshsaxena05.github.io/writing/index.html.md): list of published articles (HTML: https://anshsaxena05.github.io/writing/)
+
+## Optional
+
+- [About Ansh Saxena](https://anshsaxena05.github.io/index.html.md): experience, skills, education and contact
