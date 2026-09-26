@@ -21,6 +21,7 @@ It is plain static HTML and CSS, with no build step and no JavaScript.
 | `projects/llms.txt`, `writing/llms.txt` | Section-level llms.txt files (the spec allows one per sub-path) |
 | `*.html.md` | Clean Markdown copy of each page, at the page URL + `.md`, linked from each page with `rel="alternate" type="text/markdown"` |
 | `og-image.png`, `apple-touch-icon.png` | 1200×630 social preview image and PNG icon |
+| `598f27c9450b762556e410ab0c16d2ea.txt` | IndexNow key (lets Bing and other IndexNow engines accept URL submissions for this site). Do not delete |
 | `robots.txt`, `sitemap.xml` | Crawl directives and sitemap. robots.txt only works at the root, so there is one for the whole site |
 | `.nojekyll` | Serve files as-is (skip Jekyll) |
 
