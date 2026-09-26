@@ -82,7 +82,8 @@
 </ul>
 
 <h2>Stack</h2>
-<p>Python 3.14+ · FastAPI · LangGraph · Pydantic · Ollama or OpenAI (optional) · Redis (optional) · Langfuse (optional) · structlog · Docker Compose (app + Redis + Ollama) · pytest · uv. The API is documented with OpenAPI, Swagger UI and ReDoc. The default test suite needs no external APIs.</p>
+<p>Python 3.14+ · FastAPI · LangGraph · Pydantic · Ollama or OpenAI (optional) · Redis (optional) · Langfuse (optional) · structlog · Docker Compose (app + Redis + Ollama) · pytest · uv.</p>
+<p>Event-driven runtime (optional, behind a config flag): NATS JetStream for alert ingest, with a write-ahead log and a reconciler that republishes anything the broker missed · PostgreSQL via asyncpg (secrets and audit) · JWT service auth · OpenTelemetry with the OTLP exporter · ClickHouse in the dev stack · a Cloudflare Workers + Durable Objects gateway in TypeScript that holds analyst WebSockets at the edge · a Next.js frontend. The API is documented with OpenAPI, Swagger UI and ReDoc. The default test suite needs no external APIs.</p>
 
 <h2>Links</h2>
 <ul>

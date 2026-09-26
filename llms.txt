@@ -6,7 +6,7 @@ Headline: Backend & ML Infra Engineer @ Cyware Labs | Java · Go · Python | Kaf
 
 Key facts:
 - Current role: Software Engineer, ML Infrastructure & Backend, Cyware Labs, Bengaluru (Jan 2025 – present).
-- Open-source project: SOC Triage Agent, a determinism-first LangGraph alert-triage service (github.com/AnshSaxena05/cyberSecurity_alert_triage).
+- Open-source project: SOC Triage Agent, a determinism-first LangGraph alert-triage service (github.com/AnshSaxena05/cyberSecurity_alert_triage). Stack: Python, FastAPI, LangGraph, Pydantic, NATS JetStream, PostgreSQL, Redis, ClickHouse, OpenTelemetry, Langfuse, Cloudflare Workers (TypeScript), Next.js.
 - Earlier: Software Engineering Intern at PreProd Corp (Nov 2023 – Feb 2024) and Machine Learning Engineer Intern at Omdena (Jun 2023 – Aug 2023).
 - Education: B.Tech, Artificial Intelligence & Machine Learning, Vellore Institute of Technology (2021–2025).
 - Core skills: Python, Go, Java, FastAPI, Spring Boot, LangGraph, LangChain, RAG, Weaviate, Apache Kafka, NATS JetStream, PostgreSQL, Redis, Kubernetes, AWS, Terraform, OpenTelemetry.

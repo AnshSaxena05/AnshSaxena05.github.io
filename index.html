@@ -99,7 +99,7 @@
 
 <h3>Software Engineer, ML Infrastructure &amp; Backend — Cyware Labs</h3>
 <p class="meta">Jan 2025 – Present · Bengaluru, India · B2B cybersecurity SaaS</p>
-<p>Backend and ML infrastructure work in Python, Go and Java: multi-tenant services, event-driven pipelines, and LLM orchestration and agentic systems running on PostgreSQL, message queues and Kubernetes. Details of internal products are not public.</p>
+<p>Backend and ML infrastructure work in Python, Go and Java: multi-tenant services, event-driven pipelines, and LLM orchestration and agentic systems running on PostgreSQL, NATS JetStream and Kubernetes. Details of internal products are not public.</p>
 
 <h3>Software Engineering Intern — PreProd Corp</h3>
 <p class="meta">Nov 2023 – Feb 2024 · Bengaluru, India · ML &amp; pricing analytics startup</p>
@@ -120,7 +120,8 @@
 <div class="card">
 <h3><a href="projects/soc-triage-agent.html">SOC Triage Agent</a> <span class="tag">(open source)</span></h3>
 <p>An agentic alert-triage service. It ingests alerts from Splunk, CrowdStrike, AWS GuardDuty and Sentinel (plus a generic format, with source auto-detection) and normalises them to OCSF. It then runs a LangGraph DAG with MITRE ATT&amp;CK-routed enrichment and emits a structured <code>TriageVerdict</code> (Pydantic) via async HTTP 202 + polling. It also has a pluggable LLM backend, API-key auth, a Pytest suite and OpenAPI/Swagger docs.</p>
-<p class="meta">Python 3.14 · FastAPI · LangGraph · Pydantic · Redis · Langfuse · Ollama · Docker</p>
+<p>An optional event-driven runtime publishes alerts to NATS JetStream through a write-ahead log with a reconciler, so an alert survives a broker outage. Service-to-service auth uses JWTs, and analysts get live updates over WebSockets held at the edge by a Cloudflare Workers / Durable Objects gateway, with a Next.js frontend.</p>
+<p class="meta">Python 3.14 · FastAPI · LangGraph · Pydantic · NATS JetStream · PostgreSQL (asyncpg) · Redis · ClickHouse · OpenTelemetry · Langfuse · Ollama · Cloudflare Workers (TypeScript) · Next.js · Docker</p>
 <p><a href="projects/soc-triage-agent.html">Read the case study</a> · <a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage">Source on GitHub</a></p>
 </div>
 </section>
