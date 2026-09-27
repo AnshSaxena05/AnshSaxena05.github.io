@@ -29,7 +29,7 @@ It is plain static HTML and CSS, with no build step and no JavaScript.
 ## Editing
 
 1. Edit the HTML directly.
-2. When you add or change a page, update `sitemap.xml` (`lastmod`), the page's `.html.md` copy, `llms.txt` and `llms-full.txt`, and `dateModified` in the page's JSON-LD.
+2. When you add or change a page, update `sitemap.xml` (`lastmod`), the page's `.html.md` copy, `llms.txt` and `llms-full.txt`, and `dateModified` in the page's JSON-LD. Use a full ISO 8601 datetime with offset (e.g. `2026-09-27T18:45:00+05:30`); Search Console flags a bare date as "Invalid datetime value".
 3. Keep facts in sync with the GitHub profile README and LinkedIn.
 
 ## Deploy
