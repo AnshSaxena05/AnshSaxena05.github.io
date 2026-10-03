@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ansh Saxena — Backend &amp; ML Infrastructure Engineer at Cyware Labs, Bengaluru</title>
-<meta name="description" content="Ansh Saxena is a Backend &amp; ML Infrastructure Engineer at Cyware Labs in Bengaluru, India, building LangGraph multi-agent systems, LLM orchestration and distributed backends in Python, Go and Java.">
+<meta name="description" content="Ansh Saxena is a Backend &amp; ML Infrastructure Engineer at Cyware Labs in Bengaluru, India, building distributed systems, LangGraph multi-agent systems and LLM orchestration in Python, Go and Java.">
 <meta name="author" content="Ansh Saxena">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://anshsaxena05.github.io/">
@@ -66,7 +66,7 @@
       "mainEntity": {
         "@id": "https://anshsaxena05.github.io/#person"
       },
-      "dateModified": "2026-09-27T18:20:00+05:30",
+      "dateModified": "2026-10-03T19:35:03+05:30",
       "inLanguage": "en",
       "primaryImageOfPage": {
         "@type": "ImageObject",
@@ -96,7 +96,7 @@
           "@type": "City",
           "name": "Bengaluru"
         },
-        "skills": "Python, Go, Java, FastAPI, Spring Boot, LangGraph, RAG, Apache Kafka, NATS JetStream, PostgreSQL, Redis, Kubernetes, AWS"
+        "skills": "Java, Go, Python, Distributed Systems, Microservices, Spring Boot, Apache Kafka, NATS JetStream, PostgreSQL, Redis, Kubernetes, AWS, FastAPI, LangGraph, RAG"
       },
       "address": {
         "@type": "PostalAddress",
@@ -145,6 +145,12 @@
       "knowsAbout": [
         "Backend engineering",
         "Distributed systems",
+        "Low-latency Java",
+        "JVM concurrency",
+        "JMH benchmarking",
+        "Lock-free data structures",
+        "Microservices",
+        "Event-driven architecture",
         "ML infrastructure",
         "LLM orchestration",
         "LangGraph",
@@ -191,7 +197,7 @@
 
 <section id="about">
 <h2>About</h2>
-<p>I work where backend engineering meets applied AI. At Cyware Labs (B2B cybersecurity SaaS) I build backend services and LLM infrastructure in Python, Go and Java. In my own time I built an <a href="projects/soc-triage-agent.html">open-source SOC alert-triage agent</a> on LangGraph, FastAPI and Pydantic. I hold a B.Tech in Artificial Intelligence &amp; Machine Learning from Vellore Institute of Technology (VIT).</p>
+<p>I work where backend engineering meets applied AI. At Cyware Labs (B2B cybersecurity SaaS) I build backend services and LLM infrastructure in Python, Go and Java. In my own time I built an <a href="projects/soc-triage-agent.html">open-source SOC alert-triage agent</a> on LangGraph, FastAPI and Pydantic, and a set of <a href="projects/jvm-concurrency-benchmarks.html">JMH benchmarks for low-latency Java</a> (lock contention, a lock-free SPSC queue, allocation-free hot paths). I hold a B.Tech in Artificial Intelligence &amp; Machine Learning from Vellore Institute of Technology (VIT).</p>
 </section>
 
 <section id="experience">
@@ -222,14 +228,21 @@
 <p>An agentic alert-triage service. It ingests alerts from Splunk, CrowdStrike, AWS GuardDuty and Sentinel (plus a generic format, with source auto-detection) and normalises them to OCSF. It then runs a LangGraph DAG with MITRE ATT&amp;CK-routed enrichment and emits a structured <code>TriageVerdict</code> (Pydantic) via async HTTP 202 + polling. It also has a pluggable LLM backend, API-key auth, a Pytest suite and OpenAPI/Swagger docs.</p>
 <p>An optional event-driven runtime publishes alerts to NATS JetStream through a write-ahead log with a reconciler, so an alert survives a broker outage. Service-to-service auth uses JWTs, and analysts get live updates over WebSockets held at the edge by a Cloudflare Workers / Durable Objects gateway, with a Next.js frontend.</p>
 <p class="meta">Python 3.14 · FastAPI · LangGraph · Pydantic · NATS JetStream · PostgreSQL (asyncpg) · Redis · ClickHouse · OpenTelemetry · Langfuse · Ollama · Cloudflare Workers (TypeScript) · Next.js · Docker</p>
-<p><a href="projects/soc-triage-agent.html">Read the case study</a> · <a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage">Source on GitHub</a></p>
+<p><a href="projects/soc-triage-agent.html">Read the case study</a> · <a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage">Source on GitHub</a> · <a href="https://github.com/AnshSaxena05/cyberSecurity_alert_triage/blob/main/docs/rfcs/0001-deterministic-first-triage-and-durable-ingest.md">Design RFC</a></p>
+</div>
+
+<div class="card">
+<h3><a href="projects/jvm-concurrency-benchmarks.html">JVM Concurrency Benchmarks</a> <span class="tag">(open source)</span></h3>
+<p>JMH microbenchmarks for low-latency Java 21, with measured results. A shared counter under 1, 4 and 8 threads (<code>LongAdder</code> about 19x faster than <code>AtomicLong</code> at 8 threads), a hand-written lock-free SPSC ring buffer at roughly 3x the best JDK queue and 7x to 9x the blocking ones, and the cost of one allocation per event under G1, Parallel and ZGC (40 bytes and about 5x of the time, gone when the event is reused). It also records two benchmarking traps hit along the way: escape analysis hiding allocation, and timer-dominated percentiles at nanosecond scale.</p>
+<p class="meta">Java 21 · JMH 1.37 · Maven · JUnit · G1 / Parallel / ZGC</p>
+<p><a href="projects/jvm-concurrency-benchmarks.html">Read the results</a> · <a href="https://github.com/AnshSaxena05/jvm-concurrency-benchmarks">Source on GitHub</a></p>
 </div>
 </section>
 
 <section id="skills">
 <h2>Skills</h2>
 <dl class="skills">
-<dt>Languages</dt><dd>Python, Go, Java, SQL, JavaScript</dd>
+<dt>Languages</dt><dd>Java, Go, Python, SQL, JavaScript</dd>
 <dt>ML / AI infrastructure</dt><dd>Model deployment &amp; serving, model optimization (quantization), inference latency/cost optimization, multi-vendor LLM orchestration, LiteLLM Proxy, RAG &amp; vector search (Weaviate), LangGraph (multi-agent DAGs), LangChain, DSPy, LLM evaluation &amp; observability (Langfuse), RAGAS, prompt engineering, LLM guardrails, agentic AI, MCP (Model Context Protocol), Gemini / OpenAI / Claude APIs, Ollama</dd>
 <dt>Backend &amp; distributed systems</dt><dd>Microservices, Hexagonal Architecture (Ports &amp; Adapters), event-driven design, concurrency (asyncio, multithreading), multi-tenancy, low-latency optimization, REST, gRPC, FastAPI, Spring Boot, Spring MVC, Spring Framework, Spring AOP, design patterns, OOD</dd>
 <dt>Messaging &amp; data</dt><dd>NATS JetStream, Apache Kafka, PostgreSQL (pgx, PgBouncer), Redis, Weaviate, MongoDB, Elasticsearch, DynamoDB, Apache KVRocks</dd>
@@ -259,6 +272,7 @@
 
 <section id="contact">
 <h2>Contact</h2>
+<p>Open to Backend Engineer, Software Engineer (SDE 1) and AI / ML Infrastructure Engineer roles in Bengaluru, London, New York, Amsterdam, Hong Kong, or remote. Notice period is 30 days and negotiable to 15.</p>
 <ul>
 <li>Email: <a href="mailto:anshs5103@gmail.com">anshs5103@gmail.com</a></li>
 <li>GitHub: <a href="https://github.com/AnshSaxena05" rel="me">github.com/AnshSaxena05</a></li>

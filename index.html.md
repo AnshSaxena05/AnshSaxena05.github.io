@@ -9,7 +9,7 @@ Headline: Backend & ML Infra Engineer @ Cyware Labs | Java · Go · Python | Kaf
 
 ## About
 
-I work where backend engineering meets applied AI. At Cyware Labs (B2B cybersecurity SaaS) I build backend services and LLM infrastructure in Python, Go and Java. In my own time I built an [open-source SOC alert-triage agent](https://anshsaxena05.github.io/projects/soc-triage-agent.html) on LangGraph, FastAPI and Pydantic. I hold a B.Tech in Artificial Intelligence & Machine Learning from Vellore Institute of Technology (VIT).
+I work where backend engineering meets applied AI. At Cyware Labs (B2B cybersecurity SaaS) I build backend services and LLM infrastructure in Python, Go and Java. In my own time I built an [open-source SOC alert-triage agent](https://anshsaxena05.github.io/projects/soc-triage-agent.html) on LangGraph, FastAPI and Pydantic, and a set of [JMH benchmarks for low-latency Java](https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html) (lock contention, a lock-free SPSC queue, allocation-free hot paths). I hold a B.Tech in Artificial Intelligence & Machine Learning from Vellore Institute of Technology (VIT).
 
 ## Experience
 
@@ -43,10 +43,24 @@ Stack: Python 3.14 · FastAPI · LangGraph · Pydantic · NATS JetStream · Post
 
 - [Case study](https://anshsaxena05.github.io/projects/soc-triage-agent.html)
 - [Source on GitHub](https://github.com/AnshSaxena05/cyberSecurity_alert_triage)
+- [Design RFC](https://github.com/AnshSaxena05/cyberSecurity_alert_triage/blob/main/docs/rfcs/0001-deterministic-first-triage-and-durable-ingest.md)
+
+### JVM Concurrency Benchmarks (open source)
+
+JMH microbenchmarks for low-latency Java 21, with measured results. A shared counter under 1, 4 and 8 threads (`LongAdder` about 19x faster than `AtomicLong` at 8 threads), a hand-written lock-free SPSC ring buffer at roughly 3x the best JDK queue and 7x to 9x the blocking ones, and the cost of one allocation per event under G1, Parallel and ZGC (40 bytes and about 5x of the time, gone when the event is reused). It also records two benchmarking traps hit along the way: escape analysis hiding allocation, and timer-dominated percentiles at nanosecond scale.
+
+Stack: Java 21 · JMH 1.37 · Maven · JUnit · G1 / Parallel / ZGC
+
+- [Results](https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html)
+- [Source on GitHub](https://github.com/AnshSaxena05/jvm-concurrency-benchmarks)
+
+## Availability
+
+Open to Backend Engineer, Software Engineer (SDE 1) and AI / ML Infrastructure Engineer roles in Bengaluru, London, New York, Amsterdam, Hong Kong, or remote. Notice period is 30 days and negotiable to 15.
 
 ## Skills
 
-- **Languages:** Python, Go, Java, SQL, JavaScript
+- **Languages:** Java, Go, Python, SQL, JavaScript
 - **ML / AI infrastructure:** Model deployment & serving, model optimization (quantization), inference latency/cost optimization, multi-vendor LLM orchestration, LiteLLM Proxy, RAG & vector search (Weaviate), LangGraph (multi-agent DAGs), LangChain, DSPy, LLM evaluation & observability (Langfuse), RAGAS, prompt engineering, LLM guardrails, agentic AI, MCP (Model Context Protocol), Gemini / OpenAI / Claude APIs, Ollama
 - **Backend & distributed systems:** Microservices, Hexagonal Architecture (Ports & Adapters), event-driven design, concurrency (asyncio, multithreading), multi-tenancy, low-latency optimization, REST, gRPC, FastAPI, Spring Boot, Spring MVC, Spring Framework, Spring AOP, design patterns, OOD
 - **Messaging & data:** NATS JetStream, Apache Kafka, PostgreSQL (pgx, PgBouncer), Redis, Weaviate, MongoDB, Elasticsearch, DynamoDB, Apache KVRocks

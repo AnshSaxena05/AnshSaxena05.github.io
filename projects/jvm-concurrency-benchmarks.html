@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JVM Concurrency Benchmarks: JMH Results for Locks, SPSC Queues and Allocation — Ansh Saxena</title>
+<meta name="description" content="JMH benchmarks by Ansh Saxena, a Backend &amp; ML Infrastructure Engineer: lock contention (synchronized, ReentrantLock, AtomicLong, LongAdder), a lock-free SPSC ring buffer against Java queues, and allocation cost under G1, Parallel and ZGC.">
+<meta name="author" content="Ansh Saxena">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html">
+<link rel="alternate" type="text/markdown" href="https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html.md" title="JVM Concurrency Benchmarks — Markdown version">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../style.css">
+<meta name="theme-color" content="#0b5cad">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ansh Saxena">
+<meta property="og:title" content="JVM Concurrency Benchmarks: JMH Results for Locks, SPSC Queues and Allocation — Ansh Saxena">
+<meta property="og:description" content="Open-source JMH benchmarks for low-latency Java: lock contention, a lock-free SPSC ring buffer and allocation-free hot paths, with measured results.">
+<meta property="og:url" content="https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="https://anshsaxena05.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ansh Saxena, Backend &amp; ML Infrastructure Engineer at Cyware Labs, Bengaluru">
+<meta property="article:author" content="https://anshsaxena05.github.io/">
+<meta property="article:modified_time" content="2026-10-03T19:35:03+05:30">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JVM Concurrency Benchmarks: JMH Results for Locks, SPSC Queues and Allocation — Ansh Saxena">
+<meta name="twitter:description" content="Open-source JMH benchmarks for low-latency Java: lock contention, a lock-free SPSC ring buffer and allocation-free hot paths, with measured results.">
+<meta name="twitter:image" content="https://anshsaxena05.github.io/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html#article",
+      "headline": "JVM Concurrency Benchmarks: JMH Results for Locks, SPSC Queues and Allocation",
+      "description": "Open-source JMH benchmarks for low-latency Java: lock contention, a lock-free SPSC ring buffer against JDK queues, and allocation cost under G1, Parallel and ZGC.",
+      "url": "https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html",
+      "mainEntityOfPage": "https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html",
+      "image": "https://anshsaxena05.github.io/og-image.png",
+      "datePublished": "2026-10-03T19:35:03+05:30",
+      "dateModified": "2026-10-03T19:35:03+05:30",
+      "inLanguage": "en",
+      "author": { "@id": "https://anshsaxena05.github.io/#person" },
+      "publisher": { "@id": "https://anshsaxena05.github.io/#person" },
+      "about": { "@id": "https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html#software" },
+      "isPartOf": { "@type": "WebSite", "@id": "https://anshsaxena05.github.io/#website", "name": "Ansh Saxena", "url": "https://anshsaxena05.github.io/" },
+      "keywords": "JMH, Java 21, lock contention, LongAdder, AtomicLong, lock-free SPSC ring buffer, low latency, allocation-free, garbage collection, ZGC, G1"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html#software",
+      "name": "jvm-concurrency-benchmarks",
+      "description": "JMH microbenchmarks for low-latency Java: lock contention, a lock-free SPSC ring buffer and allocation-free hot paths.",
+      "codeRepository": "https://github.com/AnshSaxena05/jvm-concurrency-benchmarks",
+      "programmingLanguage": "Java",
+      "runtimePlatform": "Java 21",
+      "license": "https://opensource.org/licenses/MIT",
+      "url": "https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html",
+      "author": { "@id": "https://anshsaxena05.github.io/#person" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Ansh Saxena", "item": "https://anshsaxena05.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://anshsaxena05.github.io/#projects" },
+        { "@type": "ListItem", "position": 3, "name": "JVM Concurrency Benchmarks", "item": "https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="home" href="../">Ansh Saxena</a>
+  <nav><a href="../#experience">Experience</a><a href="../#projects">Projects</a><a href="../writing/">Writing</a><a href="../#contact">Contact</a></nav>
+</div></header>
+<main class="wrap">
+<h1>JVM Concurrency Benchmarks <span class="role">JMH results for lock contention, lock-free hand-off and allocation in Java 21</span></h1>
+<p class="lede">JVM Concurrency Benchmarks is an open-source repository by <a href="../">Ansh Saxena</a> with three JMH microbenchmark suites for low-latency Java: what locks and atomics cost as threads are added, how much faster a hand-written lock-free single-producer / single-consumer ring buffer is than the JDK queues, and what one allocation per event costs under G1, Parallel and ZGC.</p>
+<p><a href="https://github.com/AnshSaxena05/jvm-concurrency-benchmarks">github.com/AnshSaxena05/jvm-concurrency-benchmarks</a></p>
+
+<h2>Setup</h2>
+<p>Java 21, JMH 1.37, Maven, MIT licensed. Measured on an Intel Core i7-1255U laptop (10 cores, 12 threads, hybrid P/E cores, 15.7 GB RAM), Windows 11, Microsoft OpenJDK 21.0.12, on 2026-10-02. It was a thin-and-light machine that was also running a browser, with no core pinning and no frequency control, so the ratios are the finding and the absolute figures should be re-run on your own hardware. Scores carry the 99.9% confidence interval JMH reports.</p>
+
+<h2>1. Lock contention: shared counter</h2>
+<p>Operations per microsecond (higher is better):</p>
+<table>
+<thead><tr><th>Primitive</th><th>1 thread</th><th>4 threads</th><th>8 threads</th></tr></thead>
+<tbody>
+<tr><td><code>AtomicLong.incrementAndGet</code></td><td>152.3 ± 11.3</td><td>27.7 ± 4.4</td><td>22.8 ± 2.9</td></tr>
+<tr><td><code>LongAdder.increment</code></td><td>91.9 ± 1.7</td><td>276.4 ± 49.5</td><td>439.9 ± 22.1</td></tr>
+<tr><td><code>ReentrantLock</code></td><td>51.4 ± 2.8</td><td>28.6 ± 3.7</td><td>28.1 ± 4.3</td></tr>
+<tr><td><code>synchronized</code></td><td>40.4 ± 2.8</td><td>13.3 ± 1.6</td><td>12.5 ± 1.5</td></tr>
+</tbody>
+</table>
+<p>Uncontended, a single CAS (<code>AtomicLong</code>) wins. As threads pile onto one cache line it collapses (about 7x slower at 8 threads), while <code>LongAdder</code>, which stripes the count across cells, scales up (about 19x faster than <code>AtomicLong</code> at 8 threads). The price is that <code>LongAdder.sum()</code> is not an atomic snapshot, so it fits metrics and counters, not sequence numbers.</p>
+
+<h2>2. Lock-free hand-off: SPSC ring buffer against JDK queues</h2>
+<p>One producer, one consumer, hand-offs per microsecond (higher is better):</p>
+<table>
+<thead><tr><th>Queue</th><th>Throughput</th></tr></thead>
+<tbody>
+<tr><td><code>SpscRingBuffer</code> (this repo, lock-free)</td><td>77.4 ± 16.2</td></tr>
+<tr><td><code>ConcurrentLinkedQueue</code></td><td>26.9 ± 3.9</td></tr>
+<tr><td><code>ArrayBlockingQueue</code></td><td>10.8 ± 3.4</td></tr>
+<tr><td><code>LinkedBlockingQueue</code></td><td>8.9 ± 2.4</td></tr>
+</tbody>
+</table>
+<p>When exactly one thread writes and one reads, dropping the lock and the CAS loop gives roughly 3x over the best general-purpose queue and 7x to 9x over the blocking ones. Both sides spin, so this measures the hand-off itself and not park/unpark latency. The ring buffer uses release stores and a power-of-two mask, and is only correct under the single-producer / single-consumer rule; a test pushes 2,000,000 items across two threads and checks order and sum.</p>
+
+<h2>3. Allocation on the hot path</h2>
+<p>Average time per operation and GC cycles during 6 measured seconds, with <code>-prof gc</code>:</p>
+<table>
+<thead><tr><th>Benchmark</th><th>G1</th><th>Parallel</th><th>ZGC</th><th>Bytes/op</th></tr></thead>
+<tbody>
+<tr><td><code>newTickPerEvent</code></td><td>5.2 ns, 74 GCs</td><td>5.2 ns, 137 GCs</td><td>6.8 ns, 48 GCs</td><td>40</td></tr>
+<tr><td><code>reusedTick</code></td><td>1.1 ns, 0 GCs</td><td>1.1 ns, 0 GCs</td><td>1.5 ns, 0 GCs</td><td>0</td></tr>
+<tr><td><code>boxedLadderUpdate</code> (<code>HashMap&lt;Long,Long&gt;.merge</code>)</td><td>17.5 ns, 38 GCs</td><td>11.9 ns, 42 GCs</td><td>20.1 ns, 16 GCs</td><td>45</td></tr>
+<tr><td><code>primitiveLadderUpdate</code> (<code>long[]</code>)</td><td>1.5 ns, 0 GCs</td><td>1.5 ns, 0 GCs</td><td>1.8 ns, 0 GCs</td><td>0</td></tr>
+</tbody>
+</table>
+<p>Reusing one mutable event removes 40 bytes of garbage per tick and about 5x of the time; a <code>long[]</code> ladder removes 45 bytes and about 8x to 12x against a boxed map. With zero allocation there is nothing for any collector to do, so the collector choice stops mattering, which is the point of allocation-free design.</p>
+
+<h3>Two benchmarking lessons from this run</h3>
+<ul>
+<li><strong>Escape analysis can hide allocation.</strong> The first version of <code>newTickPerEvent</code> did not hand the object to the <code>Blackhole</code>, the JIT scalar-replaced it, and the benchmark reported 0 bytes per operation. Each event now escapes through <code>Blackhole.consume</code>, and the result is 40 bytes (a 16-byte header plus three longs).</li>
+<li><strong>Sample-mode percentiles are timer-dominated at nanosecond scale.</strong> For operations of a few nanoseconds the timer call costs more than the work, so <code>SampleTime</code> tail percentiles reflect the clock, not the code. The tables use <code>AverageTime</code>.</li>
+</ul>
+
+<h2>Links</h2>
+<ul>
+<li>Source code, test and raw JMH output: <a href="https://github.com/AnshSaxena05/jvm-concurrency-benchmarks">github.com/AnshSaxena05/jvm-concurrency-benchmarks</a></li>
+<li>More about the author: <a href="../">Ansh Saxena, Backend &amp; ML Infrastructure Engineer at Cyware Labs, Bengaluru</a></li>
+<li>Another open-source project: <a href="soc-triage-agent.html">SOC Triage Agent</a></li>
+</ul>
+</main>
+<footer><div class="wrap">© 2026 Ansh Saxena · <a href="../">Home</a> · <a href="../writing/">Writing</a> · <a href="jvm-concurrency-benchmarks.html.md">Markdown</a> · <a href="llms.txt">llms.txt</a></div></footer>
+</body>
+</html>

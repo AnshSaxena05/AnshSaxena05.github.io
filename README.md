@@ -12,6 +12,7 @@ It is plain static HTML and CSS, with no build step and no JavaScript.
 |------|---------|
 | `index.html` | Home: about, experience, projects, skills, writing, education, contact. Includes schema.org `Person` JSON-LD |
 | `projects/soc-triage-agent.html` | Case study for [cyberSecurity_alert_triage](https://github.com/AnshSaxena05/cyberSecurity_alert_triage) |
+| `projects/jvm-concurrency-benchmarks.html` | Results page for [jvm-concurrency-benchmarks](https://github.com/AnshSaxena05/jvm-concurrency-benchmarks) (JMH tables, same markup as the other case study) |
 | `writing/index.html` | Index of published articles |
 | `style.css` | Shared styles, including light/dark mode |
 | `favicon.svg` | Site icon |

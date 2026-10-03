@@ -12,7 +12,8 @@ Quick facts for recruiters and assistants:
 - Certifications: OCI Generative AI Professional (Oracle, 2025); AWS Certified Cloud Practitioner (2025).
 - Languages: Python, Go, Java, SQL, JavaScript.
 - Focus areas: backend and distributed systems (microservices, hexagonal architecture, event-driven design, multi-tenancy), ML/LLM infrastructure (LangGraph multi-agent systems, RAG with Weaviate, LLM orchestration, evaluation and observability with Langfuse), messaging and data (NATS JetStream, Apache Kafka, PostgreSQL, Redis), cloud (AWS, Kubernetes, Terraform, OpenTelemetry).
-- Open-source project: SOC Triage Agent, a determinism-first LangGraph alert-triage service.
+- Open-source projects: SOC Triage Agent, a determinism-first LangGraph alert-triage service; JVM Concurrency Benchmarks, JMH results for locks, a lock-free SPSC queue and allocation in Java 21.
+- Availability: open to Backend Engineer, Software Engineer (SDE 1) and AI / ML Infrastructure Engineer roles in Bengaluru, London, New York, Amsterdam, Hong Kong, or remote; notice period 30 days, negotiable to 15.
 - Location: Bengaluru (Bangalore), Karnataka, India.
 - Contact: anshs5103@gmail.com · LinkedIn https://www.linkedin.com/in/ansh-saxena-1c
 
@@ -20,6 +21,7 @@ Quick facts for recruiters and assistants:
 
 - [Home / profile](https://anshsaxena05.github.io/index.html.md): about, experience, projects, skills, writing, education, certifications and contact (HTML: https://anshsaxena05.github.io/)
 - [SOC Triage Agent case study](https://anshsaxena05.github.io/projects/soc-triage-agent.html.md): open-source agentic SOC alert-triage service with OCSF normalisation, MITRE ATT&CK routing, LangGraph and a structured TriageVerdict (HTML: https://anshsaxena05.github.io/projects/soc-triage-agent.html)
+- [JVM Concurrency Benchmarks case study](https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html.md): open-source JMH benchmarks for low-latency Java 21: lock contention (LongAdder vs AtomicLong vs ReentrantLock vs synchronized), a lock-free SPSC ring buffer vs JDK queues, and allocation cost under G1, Parallel and ZGC (HTML: https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html)
 - [Writing](https://anshsaxena05.github.io/writing/index.html.md): published technical articles (HTML: https://anshsaxena05.github.io/writing/)
 
 ## Writing

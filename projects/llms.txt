@@ -5,10 +5,12 @@
 ## Case studies
 
 - [SOC Triage Agent case study](https://anshsaxena05.github.io/projects/soc-triage-agent.html.md): open-source agentic SOC alert-triage service (Python, FastAPI, LangGraph, Pydantic, NATS JetStream, PostgreSQL, Redis, OpenTelemetry, Cloudflare Workers, Next.js) with OCSF normalisation, deterministic MITRE ATT&CK routing, severity-based tool budgets and a structured 6-section TriageVerdict. HTML version: https://anshsaxena05.github.io/projects/soc-triage-agent.html
+- [JVM Concurrency Benchmarks case study](https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html.md): open-source JMH benchmarks for low-latency Java 21 (Java, JMH, Maven): lock contention, a lock-free SPSC ring buffer against JDK queues, and allocation cost under G1, Parallel and ZGC. HTML version: https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html
 
 ## Source
 
 - [cyberSecurity_alert_triage on GitHub](https://github.com/AnshSaxena05/cyberSecurity_alert_triage): source code, README and tests
+- [jvm-concurrency-benchmarks on GitHub](https://github.com/AnshSaxena05/jvm-concurrency-benchmarks): JMH benchmarks, SPSC ring buffer, correctness test and raw results
 - [Architecture doc](https://github.com/AnshSaxena05/cyberSecurity_alert_triage/blob/HEAD/docs/architecture.md): design notes for the triage pipeline
 
 ## Optional

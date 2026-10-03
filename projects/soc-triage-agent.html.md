@@ -56,3 +56,5 @@ Event-driven runtime (optional, behind a config flag): NATS JetStream for alert 
 - Source code: [github.com/AnshSaxena05/cyberSecurity_alert_triage](https://github.com/AnshSaxena05/cyberSecurity_alert_triage)
 - Architecture doc: [docs/architecture.md](https://github.com/AnshSaxena05/cyberSecurity_alert_triage/blob/HEAD/docs/architecture.md)
 - More about the author: [Ansh Saxena, Backend & ML Infrastructure Engineer at Cyware Labs, Bengaluru](https://anshsaxena05.github.io/)
+- Design RFC: https://github.com/AnshSaxena05/cyberSecurity_alert_triage/blob/main/docs/rfcs/0001-deterministic-first-triage-and-durable-ingest.md
+- Another open-source project: [JVM Concurrency Benchmarks](https://anshsaxena05.github.io/projects/jvm-concurrency-benchmarks.html.md)
